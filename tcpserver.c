@@ -134,48 +134,15 @@ int main(void) {
          printf("file name is:\n");
          printf("%s", sentence);
          printf("\nwith length %d\n\n", bytes_recd);
-
-    FILE* file;
-    file = fopen(sentence,"r");
-    if ( file != NULL )
-   {
-      char line [80]; /* or other suitable maximum line size */
-      while ( fgets ( line, 80, file ) != NULL ) /* read a line */
-      {
-         fputs ( line, stdout ); /* write the line */
-      }
-      fclose ( file );
-   }
-        //  int count;
-        //  int i;
-        //  char c;
-        //  int cl;
-        //  FILE * file;
-        //  file = fopen(sentence,"r");
-        //  //file = fopen("test.txt", "r");
-        //  if (file) {
-        //      for (c = getc(file); c != EOF; c = getc(file)){
-        //         if (c == '\n'){ // Increment count if this character is newline
-        //             count += 1;
-        //             cl = 0;
-
-        //         }
-        //         cl+=1;
-        //      }
-        //      printf("this file has %d lines \n", count);
-        //     //
-
-            
-        //      for(i = 0; i <= count; i++){
-        //         //  Packet packet = new_packet((short)i,80,)
-
-        //      }
-
-
-            
-        //  }else{
-        //      printf("could not open this file... try again please\n");
-        //  }
+         FILE* file;
+         file = fopen(sentence,"r");
+         if ( file != NULL ){
+             char line [80]; /* or other suitable maximum line size */
+             while ( fgets ( line, 80, file ) != NULL ){
+                 fputs ( line, stdout ); /* write the line */
+                }
+                fclose ( file );
+            }
 
 
 
