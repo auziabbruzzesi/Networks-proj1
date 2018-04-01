@@ -140,6 +140,7 @@ int main(void) {
 
                 }
              }
+             printf("there are %d lines \n", count);
             
         
              char line [80]; /* or other suitable maximum line size */
@@ -151,8 +152,9 @@ int main(void) {
                  Packet packet = new_packet((short) j+1,(short)count,line);
                  j++;
                  int k;
+                 printf("here\n");
                  for(k = 0; k < 80; k++){
-                     printf("%s",packet.data);
+                     printf("%s",packet.data[k]);
                  }
                 }
                 fclose ( file );
