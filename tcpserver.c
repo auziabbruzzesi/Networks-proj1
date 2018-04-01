@@ -138,18 +138,13 @@ int main(void) {
     FILE* file;
     if ( file != NULL )
    {
-      char line [ 128 ]; /* or other suitable maximum line size */
+      char line [128]; /* or other suitable maximum line size */
       while ( fgets ( line, sizeof(line), file ) != NULL ) /* read a line */
       {
          fputs ( line, stdout ); /* write the line */
       }
       fclose ( file );
    }
-   else
-   {
-      perror ( "hi" ); /* why didn't the file open? */
-   }
-
         //  int count;
         //  int i;
         //  char c;
