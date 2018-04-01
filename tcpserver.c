@@ -133,16 +133,16 @@ int main(void) {
          char c;
          int count = 0;
          if (file) {
-             for (c = getc(file); c != EOF; c = getc(file)){
-                if (c == '\n'){ // Increment count if this character is newline
-                    count += 1;
-                    //cl = 0;
+            //  for (c = getc(file); c != EOF; c = getc(file)){
+            //     if (c == '\n'){ // Increment count if this character is newline
+            //         count += 1;
+            //         //cl = 0;
 
-                }
+            //     }
                 
-             }
-             printf("there are %d lines \n", count);
-             printf("here\n");
+            //  }
+            //  printf("there are %d lines \n", count);
+            //  printf("here\n");
              
             
         
@@ -153,11 +153,10 @@ int main(void) {
              while ( fgets ( line, sizeof(line), file ) != NULL ){
                  //fputs ( line, stdout ); /* write the line */
 
-                 Packet packet = new_packet((short) j+1,(short)count,line);
+                 Packet packet = new_packet((short) j+1,80,line);
                  j++;
                  int k;
                  //printf("here\n");
-                 printf("%s\n",line);
                  printf("%s\n",packet.data);
                 }
                 fclose ( file );
