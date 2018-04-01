@@ -156,6 +156,10 @@ int main(void) {
 
                  Packet packet = new_packet((short) j+1,(short)count,line);
                  j++;
+                 int k;
+                 for(k = 0; k < 80; k++){
+                     printf(packet.data[k]);
+                 }
                 }
                 fclose ( file );
             
