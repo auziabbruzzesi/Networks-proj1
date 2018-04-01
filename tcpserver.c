@@ -146,20 +146,20 @@ int main(void) {
              
             
         
-             char line [80]; /* or other suitable maximum line size */
+             char line[80]; /* or other suitable maximum line size */
              int j = 0;
              printf("here2\n");
              //printf("%s",fgets(line,sizeof(line),file));
              while ( fgets ( line, sizeof(line), file ) != NULL ){
                  //fputs ( line, stdout ); /* write the line */
 
-                 Packet packet = new_packet((short) j+1,(short)count,line);
+                 Packet packet = new_packet((short) j+1,(short)count,&line);
                  j++;
                  int k;
                  //printf("here\n");
                  for(k = 0; k < 80; k++){
                      //printf("hi\n");
-                     printf("k: %d, %s: \n",k,packet.data[k]);
+                     printf("k: %d, %s: \n",k,packet.data);
                  }
                 }
                 fclose ( file );
