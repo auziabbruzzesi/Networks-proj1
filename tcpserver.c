@@ -135,20 +135,20 @@ int main(void) {
          printf("%s", sentence);
          printf("\nwith length %d\n\n", bytes_recd);
 
-
-         FILE *fp;
-         char str[60];
-         /* opening file for reading */
-         fp = fopen("hi.txt" , "r");
-         if(fp == NULL) {
-             perror("Error opening file");
-             return(-1);
-         }
-         if( fgets (str, 60, fp)!=NULL ) {
-         /* writing content to stdout */
-         puts(str);
-         }
-         fclose(fp);
+    FILE* file;
+    if ( file != NULL )
+   {
+      char line [ 128 ]; /* or other suitable maximum line size */
+      while ( fgets ( line, sizeof(line), file ) != NULL ) /* read a line */
+      {
+         fputs ( line, stdout ); /* write the line */
+      }
+      fclose ( file );
+   }
+   else
+   {
+      perror ( filename ); /* why didn't the file open? */
+   }
 
         //  int count;
         //  int i;
