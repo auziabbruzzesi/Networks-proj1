@@ -11,7 +11,7 @@
 #include <unistd.h>         /* for close */
 
 #define STRING_SIZE 1024
-
+//this is a comment
 int main(void) {
 
    int sock_client;  /* Socket used by client */
