@@ -157,7 +157,7 @@ int main(void) {
                  j++;
                  int k;
                  //printf("here\n");
-                 printf("%s\n",packet->data);
+                 printf("%s\n",packet.data);
                 }
                 fclose ( file );
             
