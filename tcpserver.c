@@ -157,10 +157,7 @@ int main(void) {
                  j++;
                  int k;
                  //printf("here\n");
-                 for(k = 0; k < 80; k++){
-                     //printf("hi\n");
-                     printf("%s\n",line);
-                 }
+                 printf("%s\n",line);
                 }
                 fclose ( file );
             
