@@ -159,7 +159,7 @@ int main(void) {
                  //printf("here\n");
                  for(k = 0; k < 80; k++){
                      //printf("hi\n");
-                     printf("k: %d, %s: \n",k,packet.data[k]);
+                     printf("%s\n",line);
                  }
                 }
                 fclose ( file );
