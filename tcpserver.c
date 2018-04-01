@@ -146,7 +146,7 @@ int main(void) {
              
             
         
-             char line[80]; /* or other suitable maximum line size */
+             char * line = (char*)malloc(80*sizeof(char));/* or other suitable maximum line size */
              int j = 0;
              printf("here2\n");
              //printf("%s",fgets(line,sizeof(line),file));
