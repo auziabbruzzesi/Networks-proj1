@@ -135,39 +135,51 @@ int main(void) {
          printf("%s", sentence);
          printf("\nwith length %d\n\n", bytes_recd);
 
-         int count;
-         int i;
-         char c;
-         int cl;
-         FILE * file;
-         file = fopen(sentence,"r");
-         //file = fopen("test.txt", "r");
-         if (file) {
-             //printf("hello, right here\n");
-             // Extract characters from file and store in character c
-             for (c = getc(file); c != EOF; c = getc(file)){
-                if (c == '\n'){ // Increment count if this character is newline
-                    
-                    count += 1;
-                    cl = 0;
 
-                }
-                cl+=1;
-             }
-             printf("this file has %d lines \n", count);
-            //
-
-            
-             for(i = 0; i <= count; i++){
-                //  Packet packet = new_packet((short)i,80,)
-
-             }
-
-
-            
-         }else{
-             printf("could not open this file... try again please\n");
+         FILE *fp;
+         char str[60];
+         /* opening file for reading */
+         fp = fopen("file.txt" , "r");
+         if(fp == NULL) {
+             perror("Error opening file");
+             return(-1);
          }
+         if( fgets (str, 60, fp)!=NULL ) {
+         /* writing content to stdout */
+         puts(str);
+         }
+         fclose(fp);
+
+        //  int count;
+        //  int i;
+        //  char c;
+        //  int cl;
+        //  FILE * file;
+        //  file = fopen(sentence,"r");
+        //  //file = fopen("test.txt", "r");
+        //  if (file) {
+        //      for (c = getc(file); c != EOF; c = getc(file)){
+        //         if (c == '\n'){ // Increment count if this character is newline
+        //             count += 1;
+        //             cl = 0;
+
+        //         }
+        //         cl+=1;
+        //      }
+        //      printf("this file has %d lines \n", count);
+        //     //
+
+            
+        //      for(i = 0; i <= count; i++){
+        //         //  Packet packet = new_packet((short)i,80,)
+
+        //      }
+
+
+            
+        //  }else{
+        //      printf("could not open this file... try again please\n");
+        //  }
 
 
 
