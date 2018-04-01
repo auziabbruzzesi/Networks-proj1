@@ -147,7 +147,7 @@ int main(void) {
    }
    else
    {
-      perror ( filename ); /* why didn't the file open? */
+      perror ( "hi" ); /* why didn't the file open? */
    }
 
         //  int count;
