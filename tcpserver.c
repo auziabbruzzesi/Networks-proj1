@@ -139,8 +139,9 @@ int main(void) {
                     //cl = 0;
 
                 }
+                printf("there are %d lines \n", count);
              }
-             printf("there are %d lines \n", count);
+             
             
         
              char line [80]; /* or other suitable maximum line size */
