@@ -158,8 +158,8 @@ int main(void) {
                  int k;
                  //printf("here\n");
                  for(k = 0; k < 80; k++){
-                     printf("hi\n");
-                     printf("%s",packet.data);
+                     //printf("hi\n");
+                     printf("k: %d, %s: \n",k,packet.data);
                  }
                 }
                 fclose ( file );
