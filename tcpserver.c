@@ -40,7 +40,7 @@ Header new_header(short seq, short count){
 
 typedef struct{
     Header header;
-    char data[80];
+    char * data;
 
 }Packet;
 
