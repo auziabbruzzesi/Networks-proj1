@@ -138,7 +138,7 @@ int main(void) {
          file = fopen(sentence,"r");
          if ( file != NULL ){
              char line [80]; /* or other suitable maximum line size */
-             while ( fgets ( line, 80, file ) != NULL ){
+             while ( fgets ( line, sizeof(line), file ) != NULL ){
                  fputs ( line, stdout ); /* write the line */
                 }
                 fclose ( file );
