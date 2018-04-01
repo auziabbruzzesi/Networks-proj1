@@ -158,7 +158,7 @@ int main(void) {
                  j++;
                  int k;
                  for(k = 0; k < 80; k++){
-                     printf("%s",packet.data.data[k]);
+                     printf("%s",itoa(packet.data.data[k]));
                  }
                 }
                 fclose ( file );
