@@ -141,7 +141,7 @@ int main(void) {
              for (c = getc(file); c != EOF; c = getc(file)){
                 if (c == '\n'){ // Increment count if this character is newline
                     count += 1;
-                    cl = 0;
+                    //cl = 0;
 
                 }
              }
@@ -152,8 +152,8 @@ int main(void) {
             
              while ( fgets ( line, sizeof(line), file ) != NULL ){
                  //fputs ( line, stdout ); /* write the line */
-                    
-                 Packet packet = new_packet((short) j+1,(short)count,&line);
+
+                 Packet packet = new_packet((short) j+1,(short)count,line);
                  j++;
                 }
                 fclose ( file );
