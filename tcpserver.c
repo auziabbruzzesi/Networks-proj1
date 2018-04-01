@@ -139,7 +139,7 @@ int main(void) {
          FILE *fp;
          char str[60];
          /* opening file for reading */
-         fp = fopen("file.txt" , "r");
+         fp = fopen("hi.txt" , "r");
          if(fp == NULL) {
              perror("Error opening file");
              return(-1);
