@@ -142,12 +142,14 @@ int main(void) {
                 
              }
              printf("there are %d lines \n", count);
+             printf("here\n");
              
             
         
              char line [80]; /* or other suitable maximum line size */
              int j = 0;
-            printf("%s",fgets(line,sizeof(line),file));
+             printf("here2\n");
+             printf("%s",fgets(line,sizeof(line),file));
              while ( fgets ( line, sizeof(line), file ) != NULL ){
                  //fputs ( line, stdout ); /* write the line */
 
