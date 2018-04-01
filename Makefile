@@ -1,6 +1,7 @@
 CC= /usr/bin/gcc
-all:	tcpclient tcpserver udpclient udpserver
-
+all:	git tcpclient tcpserver udpclient udpserver
+git:
+	git pull
 tcpclient: tcpclient.c;
 	${CC} tcpclient.c -o tcpclient
 
