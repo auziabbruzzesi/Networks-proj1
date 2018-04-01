@@ -136,6 +136,7 @@ int main(void) {
          printf("\nwith length %d\n\n", bytes_recd);
          FILE* file;
          file = fopen(sentence,"r");
+         char c;
          int count;
          if (file) {
              for (c = getc(file); c != EOF; c = getc(file)){
