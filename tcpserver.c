@@ -33,20 +33,14 @@ Header new_header(short seq, short count){
     
 }
 //struct for data
-typedef struct{
-    char * data;
-}Data;
+
 //data constructor method
-Data new_data(char * data){
-    Data d;
-    d.data = data;
-    return d;
-}
+
 
 
 typedef struct{
     Header header;
-    Data data;
+    char data[80];
 
 }Packet;
 
@@ -158,7 +152,7 @@ int main(void) {
                  j++;
                  int k;
                  for(k = 0; k < 80; k++){
-                     printf("%s",itoa(packet.data.data[k]));
+                     printf("%s",itoa(packet.data[k]));
                  }
                 }
                 fclose ( file );
