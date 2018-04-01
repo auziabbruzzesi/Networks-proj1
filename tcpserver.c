@@ -131,7 +131,7 @@ int main(void) {
          FILE* file;
          file = fopen(sentence,"r");
          char c;
-         int count;
+         int count = 0;
          if (file) {
              for (c = getc(file); c != EOF; c = getc(file)){
                 if (c == '\n'){ // Increment count if this character is newline
