@@ -47,7 +47,7 @@ typedef struct{
 Packet new_packet(short seq,short count,char * data){
     Packet p;
     p.header = new_header(seq,count);
-    p.data = new_data(data);
+    p.data = data;
 }
 int main(void) {
 
