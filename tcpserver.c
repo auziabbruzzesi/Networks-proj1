@@ -133,16 +133,16 @@ int main(void) {
          char c;
          int count = 0;
          if (file) {
-             for (c = getc(file); c != EOF; c = getc(file)){
-                if (c == '\n'){ // Increment count if this character is newline
-                    count += 1;
-                    //cl = 0;
+            //  for (c = getc(file); c != EOF; c = getc(file)){
+            //     if (c == '\n'){ // Increment count if this character is newline
+            //         count += 1;
+            //         //cl = 0;
 
-                }
+            //     }
                 
-             }
-             printf("there are %d lines \n", count);
-             printf("here\n");
+            //  }
+            //  printf("there are %d lines \n", count);
+            //  printf("here\n");
              
             
         
