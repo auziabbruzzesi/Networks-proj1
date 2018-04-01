@@ -136,10 +136,11 @@ int main(void) {
          printf("\nwith length %d\n\n", bytes_recd);
 
     FILE* file;
+    file = fopen(sentence,"r");
     if ( file != NULL )
    {
-      char line [128]; /* or other suitable maximum line size */
-      while ( fgets ( line, sizeof(line), file ) != NULL ) /* read a line */
+      char line [80]; /* or other suitable maximum line size */
+      while ( fgets ( line, 80, file ) != NULL ) /* read a line */
       {
          fputs ( line, stdout ); /* write the line */
       }
