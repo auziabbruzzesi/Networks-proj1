@@ -143,6 +143,7 @@ int main(void) {
          file = fopen(sentence,"r");
          //file = fopen("test.txt", "r");
          if (file) {
+             char str[80];
              //printf("hello, right here\n");
              // Extract characters from file and store in character c
              for (c = getc(file); c != EOF; c = getc(file)){
@@ -156,10 +157,17 @@ int main(void) {
              }
              printf("this file has %d lines \n", count);
             //
+
+            if( fgets (str, 80, file)!=NULL ) {
+            /* writing content to stdout */
+                 puts(str);
+            }
              for(i = 0; i <= count; i++){
                 //  Packet packet = new_packet((short)i,80,)
 
              }
+
+
             
          }else{
              printf("could not open this file... try again please\n");
