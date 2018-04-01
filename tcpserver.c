@@ -151,7 +151,7 @@ int main(void) {
              printf("here2\n");
              //printf("%s",fgets(line,sizeof(line),file));
              while ( fgets ( line, sizeof(line), file ) != NULL ){
-                 fputs ( line, stdout ); /* write the line */
+                 //fputs ( line, stdout ); /* write the line */
 
                  Packet packet = new_packet((short) j+1,(short)count,line);
                  j++;
