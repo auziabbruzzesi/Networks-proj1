@@ -55,7 +55,7 @@ int main(void) {
 
    printf("Enter port number for server: ");
    //scanf("%hu", &server_port);
-   server_port = 65000;
+   server_port = 45678;
 
    /* Clear server address structure and initialize with server address */
    memset(&server_addr, 0, sizeof(server_addr));
