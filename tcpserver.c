@@ -158,6 +158,7 @@ int main(void) {
                  int k;
                  printf("here\n");
                  for(k = 0; k < 80; k++){
+                     printf("hi\n");
                      printf("%s",packet.data);
                  }
                 }
