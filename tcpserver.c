@@ -161,11 +161,12 @@ int main(void) {
             if( fgets (str, 80, file)!=NULL ) {
             /* writing content to stdout */
                  puts(str);
+                 printf("here\n");
             }
-             for(i = 0; i <= count; i++){
-                //  Packet packet = new_packet((short)i,80,)
+            //  for(i = 0; i <= count; i++){
+            //     //  Packet packet = new_packet((short)i,80,)
 
-             }
+            //  }
 
 
             
