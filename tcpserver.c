@@ -141,6 +141,7 @@ int main(void) {
 					bytes_sent = send(sock_connection, &p.header, sizeof(p.header), 0);// send header
                     // printf("sizeof(p.header): %lu\n",sizeof(p.header));
                     // printf("bytes sent: %d \n",bytes_sent);
+                    bytes_sent = 0;
 					bytes_sent = send(sock_connection, &p.data, p.header.count, 0);//send data
                     printf("sizeof(p.data): %lu\n",sizeof(p.data));
                     printf("bytes sent: %d \n",bytes_sent);
