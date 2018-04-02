@@ -135,11 +135,13 @@ int main(void) {
            while (getline(&line, &linelength, file) > 0) {
 					printf("Reading in line:\n");
 					printf("%s", line);
-					unsigned short header[2] = {htons(seq), htons((unsigned short) linelength)};
-					bytes_sent = send(sock_connection, header, sizeof(header), 0);
-					bytes_sent = send(sock_connection, line, linelength, 0);
+                    //Header h = new_header(htons(seq),linelenght);
+					//unsigned short header[2] = {htons(seq), htons((unsigned short) linelength)};
+                    Packet p = new_packet(htons(seq),htons((short)linelength),line);
+					bytes_sent = send(sock_connection, p.header, sizeof(p.header), 0);// send header
+					bytes_sent = send(sock_connection, p.data, p.header.count, 0);//send data
 					printf("Sent line is:\n");
-					printf("%s", line);
+					printf("%s", p.data);
                     seq +=1;
 				}
 				//SEND FINAL MESSAGE
