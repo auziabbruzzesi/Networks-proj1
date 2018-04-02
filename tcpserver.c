@@ -133,8 +133,8 @@ int main(void) {
 		
          if (file) {
            while (getline(&line, &linelength, file) > 0) {
-					printf("Reading in line:\n");
-					printf("%s", line);
+					//printf("Reading in line:\n");
+					//printf("%s", line);
                     //Header h = new_header(htons(seq),linelenght);
 					//unsigned short header[2] = {htons(seq), htons((unsigned short) linelength)};
                     Packet p = new_packet(htons(seq),htons((short)linelength),line);//makes packet "object." will initialize the header and data
