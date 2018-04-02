@@ -139,7 +139,7 @@ int main(void) {
 					//unsigned short header[2] = {htons(seq), htons((unsigned short) linelength)};
                     Packet p = new_packet(htons(seq),htons((short)linelength),line);//makes packet "object." will initialize the header and data
 					bytes_sent = send(sock_connection, &p.header, sizeof(p.header), 0);// send header
-                    printf("sizeof(p.header): %d\n",sizeof(p.header));
+                    printf("sizeof(p.header): %lu\n",sizeof(p.header));
                     printf("bytes sent: %d \n",bytes_sent);
 					bytes_sent = send(sock_connection, &p.data, p.header.count, 0);//send data
 					printf("Sent line is:\n");
