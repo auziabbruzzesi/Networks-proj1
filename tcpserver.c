@@ -129,16 +129,18 @@ int main(void) {
          file = fopen(sentence,"r");
          char * line = NULL;
 		 size_t linelength = 0;
+         int seq = 0;
 		 unsigned short count = 0;
          if (file) {
            while (getline(&line, &linelength, file) > 0) {
 					printf("Reading in line:\n");
 					printf("%s", line);
-					unsigned short header[2] = {htons((count++)-1), htons((unsigned short) linelength)};
+					unsigned short header[2] = {htons(seq), htons((unsigned short) linelength)};
 					bytes_sent = send(sock_connection, header, sizeof(header), 0);
 					bytes_sent = send(sock_connection, line, linelength, 0);
 					printf("Sent line is:\n");
 					printf("%s", line);
+                    seq +=1;
 				}
 				//SEND FINAL MESSAGE
 				unsigned short header[2] = {htons((count++)-1), htons(0)};
