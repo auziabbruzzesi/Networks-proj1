@@ -138,8 +138,8 @@ int main(void) {
                     //Header h = new_header(htons(seq),linelenght);
 					//unsigned short header[2] = {htons(seq), htons((unsigned short) linelength)};
                     Packet p = new_packet(htons(seq),htons((short)linelength),line);
-					bytes_sent = send(sock_connection, p.header, sizeof(p.header), 0);// send header
-					bytes_sent = send(sock_connection, p.data, p.header.count, 0);//send data
+					bytes_sent = send(sock_connection, (void *)p.header, sizeof(p.header), 0);// send header
+					bytes_sent = send(sock_connection, (void*)p.data, p.header.count, 0);//send data
 					printf("Sent line is:\n");
 					printf("%s", p.data);
                     seq +=1;
