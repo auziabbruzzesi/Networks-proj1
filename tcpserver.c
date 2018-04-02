@@ -138,12 +138,12 @@ int main(void) {
                     
                     Packet p = new_packet(htons(seq),htons((short)linelength),line);//makes packet "object." will initialize the header and data
                    
-					bytes_sent = send(sock_connection, &p.header, sizeof(p.header)*2, 0);// send header
+					bytes_sent = send(sock_connection, &p.header, sizeof(p.header), 0);// send header
                     
                     bytes_sent = 0;
                     
 					bytes_sent = send(sock_connection, p.data, strlen(p.data), 0);//send data
-
+                    
                     printf("sizeof(p.data): %d\n",strlen(p.data));
                     printf("bytes sent: %d \n",bytes_sent);
 
