@@ -127,12 +127,12 @@ int main(void) {
          msg_len = bytes_recd;
          FILE* file;
          file = fopen(sentence,"r");
-         char * line = NULL;
-		 int linelength = 0;
+         char * * line = NULL;
+		 size_t * linelength;
          int seq = 0;
 		
          if (file) {
-           while (getline(&line, &linelength, file) > 0) {
+           while (getline(line, linelength, file) > 0) {
 					printf("Reading in line:\n");
 					printf("%s", line);
                     //Header h = new_header(htons(seq),linelenght);
