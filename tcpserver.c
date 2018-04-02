@@ -128,16 +128,16 @@ int main(void) {
          FILE* file;
          file = fopen(sentence,"r");
          char * line = NULL;
-		 size_t linelength = 0;
+		 int linelength = 0;
          int seq = 0;
-		 unsigned short count = 0;
+		
          if (file) {
            while (getline(&line, &linelength, file) > 0) {
 					printf("Reading in line:\n");
 					printf("%s", line);
                     //Header h = new_header(htons(seq),linelenght);
 					//unsigned short header[2] = {htons(seq), htons((unsigned short) linelength)};
-                    Packet p = new_packet(htons(seq),htons((short)linelength),line);
+                    Packet p = new_packet(htons(seq),htons((short)linelength),line);//makes packet "object." will initialize the header and data
 					bytes_sent = send(sock_connection, &p.header, sizeof(p.header), 0);// send header
 					bytes_sent = send(sock_connection, &p.data, p.header.count, 0);//send data
 					printf("Sent line is:\n");
