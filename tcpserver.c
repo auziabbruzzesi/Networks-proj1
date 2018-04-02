@@ -32,11 +32,6 @@ Header new_header(short seq, short count){
     return h;
     
 }
-//struct for data
-
-//data constructor method
-
-
 
 typedef struct{
     Header header;
