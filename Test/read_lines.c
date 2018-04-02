@@ -43,7 +43,7 @@ int main(int argc, char ** argv){
     while ( fgets ( line, sizeof(line), file ) != NULL ){
 //fputs ( line, stdout ); /* write the line */
 
-                 Packet packet = new_packet((short) j+1,80,line);
+                 Packet packet = new_packet((short) j+1,80,&line);
                  j++;
                  int k;
                  //printf("here\n");
@@ -52,6 +52,7 @@ int main(int argc, char ** argv){
                 fclose ( file );
             
          
+        
 
     return 0;
 }
