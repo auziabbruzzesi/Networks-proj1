@@ -152,6 +152,7 @@ int main(void) {
                     seq +=1;
                     printf("hello\n");
 				}
+                printf("hello2\n");
 				//SEND FINAL MESSAGE
 				// unsigned short header[2] = {htons((count++)-1), htons(0)};
                 char * last_packet_data = NULL;
