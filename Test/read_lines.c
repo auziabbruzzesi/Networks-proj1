@@ -41,9 +41,10 @@ int main(int argc, char ** argv){
     printf("here2\n");
     //printf("%s",fgets(line,sizeof(line),file));
     while ( fgets ( line, sizeof(line), file ) != NULL ){
+        printf("in the while loop \n");
 //fputs ( line, stdout ); /* write the line */
 
-                 Packet packet = new_packet((short) j+1,80,&line);
+                 Packet packet = new_packet((short) j+1,80,*line);
                  j++;
                  int k;
                  //printf("here\n");
