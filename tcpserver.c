@@ -150,6 +150,7 @@ int main(void) {
 					//printf("%s", p.data);
                     //free(&p);
                     seq +=1;
+                    printf("hello\n");
 				}
 				//SEND FINAL MESSAGE
 				// unsigned short header[2] = {htons((count++)-1), htons(0)};
