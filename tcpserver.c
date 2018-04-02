@@ -130,16 +130,17 @@ int main(void) {
          char * line = NULL;
 		 size_t linelength = 256;
 		 unsigned short count = 0;
-
+         short seq = 0;
          if (file) {
            while (getline(&line, &linelength, file) > 0) {
 					printf("Reading in line: %s \n",line);
-					printf("with %zu length\n",linelength );
-					unsigned short header[2] = {htons((count++)-1), htons((unsigned short) linelength)};
-					bytes_sent = send(sock_connection, header, sizeof(header), 0);
-					bytes_sent = send(sock_connection, line, linelength, 0);
+					printf("with %zu length\n",linelength);
+					Packet p = new_packet(seq,strlen(line),line);
+					bytes_sent = send(sock_connection, &p.header, sizeof(header), 0);
+					bytes_sent = send(sock_connection, p.data, strlen(p.data), 0);
 					printf("Sent line is:\n");
 					printf("%s", line);
+                    seq+=1;
 				}
 				//SEND FINAL MESSAGE
 				unsigned short header[2] = {htons((count++)-1), htons(0)};
