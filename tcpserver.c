@@ -148,7 +148,7 @@ int main(void) {
 
 					printf("Sent line is:\n");
 					printf("%s", p.data);
-                    free(p);
+                    free(&p);
                     seq +=1;
 				}
 				//SEND FINAL MESSAGE
