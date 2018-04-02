@@ -136,7 +136,8 @@ int main(void) {
 					printf("Reading in line: %s \n",line);
 					printf("with %zu length\n",linelength);
 					Packet p = new_packet(seq,strlen(line),line);
-					bytes_sent = send(sock_connection, &p.header, sizeof(header), 0);
+					bytes_sent = send(sock_connection, &p.header, sizeof(p.header), 0);
+                    printf("sent header\n");
 					bytes_sent = send(sock_connection, p.data, strlen(p.data), 0);
 					printf("Sent line is:\n");
 					printf("%s", line);
