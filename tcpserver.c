@@ -132,8 +132,8 @@ int main(void) {
 		 unsigned short count = 0;
          if (file) {
            while (getline(&line, &linelength, file) > 0) {
-					printf("Reading in line:\n");
-					printf("%s", line);
+					printf("Reading in line: %s \n",line);
+					printf("with %d length\n",linelength );
 					unsigned short header[2] = {htons((count++)-1), htons((unsigned short) linelength)};
 					bytes_sent = send(sock_connection, header, sizeof(header), 0);
 					bytes_sent = send(sock_connection, line, linelength, 0);
