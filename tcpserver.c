@@ -138,7 +138,7 @@ int main(void) {
                     
                     Packet p = new_packet(htons(seq),htons((short)linelength),line);//makes packet "object." will initialize the header and data
                    
-					bytes_sent = send(sock_connection, p.header, sizeof(p.header), 0);// send header
+					bytes_sent = send(sock_connection, &p.header, sizeof(p.header), 0);// send header
                     
                     bytes_sent = 0;
                     
