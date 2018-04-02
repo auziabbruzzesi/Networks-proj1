@@ -144,7 +144,7 @@ int main(void) {
                     
 					bytes_sent = send(sock_connection, p.data, strlen(p.data), 0);//send data
                     
-                    printf("sizeof(p.data): %d\n",strlen(p.data));
+                    //printf("sizeof(p.data): %d\n",strlen(p.data));
                     printf("bytes sent: %d \n",bytes_sent);
 
 					printf("Sent line is:\n");
