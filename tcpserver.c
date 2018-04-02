@@ -131,21 +131,25 @@ int main(void) {
 		 size_t linelength = 0;
          int seq = 0;
 		
-         if (file) {
+          if (file) {
            while (getline(&line, &linelength, file) > 0) {
-					printf("value: %d\n", getline(&line, &linelength, file));
+					printf("Reading in line:\n");
+					printf("%s", line);
                     //Header h = new_header(htons(seq),linelenght);
 					//unsigned short header[2] = {htons(seq), htons((unsigned short) linelength)};
                     Packet p = new_packet(htons(seq),htons((short)linelength),line);//makes packet "object." will initialize the header and data
 					bytes_sent = send(sock_connection, &p.header, sizeof(p.header), 0);// send header
-                     printf("sizeof(p.header): %lu\n",sizeof(p.header));
-                     printf("bytes sent: %d \n",bytes_sent);
-					bytes_sent = send(sock_connection, p.data, p.header.count, 0);//send data
+                    // printf("sizeof(p.header): %lu\n",sizeof(p.header));
+                    // printf("bytes sent: %d \n",bytes_sent);
+                    bytes_sent = 0;
+					bytes_sent = send(sock_connection, p.data, strlen(p.data), 0);//send data
+                    printf("sizeof(p.data): %d\n",strlen(p.data));
+                    printf("bytes sent: %d \n",bytes_sent);
+
 					printf("Sent line is:\n");
 					printf("%s", p.data);
-                    
+                    //free(&p);
                     seq +=1;
-                    printf("here");
 				}
 				//SEND FINAL MESSAGE
 				// unsigned short header[2] = {htons((count++)-1), htons(0)};
@@ -167,4 +171,3 @@ int main(void) {
  		
       close(sock_connection);
    } 
-
