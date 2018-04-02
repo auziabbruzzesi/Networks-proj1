@@ -26,7 +26,7 @@ typedef struct{
 
 }Packet;
 
-Packet new_packet(short seq,short count,char data){
+Packet new_packet(short seq,short count,char * data){
     Packet p;
     p.header = new_header(seq,count);
     p.data = data;
