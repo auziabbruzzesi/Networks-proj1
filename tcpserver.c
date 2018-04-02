@@ -133,7 +133,6 @@ int main(void) {
 		
          if (file) {
            while (getline(&line, &linelength, file) > 0) {
-                    printf("linelength = %uh \n", linelength);
 					printf("Reading in line:\n");
 					printf("%s", line);
                     //Header h = new_header(htons(seq),linelenght);
@@ -144,7 +143,6 @@ int main(void) {
                     // printf("bytes sent: %d \n",bytes_sent);
                     bytes_sent = 0;
 					bytes_sent = send(sock_connection, p.data, strlen(p.data), 0);//send data
-                   // printf("linelength = %uh \n", linelength);
                     printf("sizeof(p.data): %d\n",strlen(p.data));
                     printf("bytes sent: %d \n",bytes_sent);
 
