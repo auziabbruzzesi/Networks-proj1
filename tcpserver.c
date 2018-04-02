@@ -128,8 +128,9 @@ int main(void) {
          FILE* file;
          file = fopen(sentence,"r");
          char * line = NULL;
-		 size_t linelength = 0;
+		 size_t linelength = 256;
 		 unsigned short count = 0;
+
          if (file) {
            while (getline(&line, &linelength, file) > 0) {
 					printf("Reading in line: %s \n",line);
