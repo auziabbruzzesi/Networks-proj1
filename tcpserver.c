@@ -43,6 +43,7 @@ Packet new_packet(short seq,short count,char * data){
     Packet p;
     p.header = new_header(seq,count);
     p.data = data;
+    return p;
 }
 int main(void) {
 
@@ -123,57 +124,38 @@ int main(void) {
          printf("file name is:\n");
          printf("%s", sentence);
          printf("\nwith length %d\n\n", bytes_recd);
+         msg_len = bytes_recd;
          FILE* file;
          file = fopen(sentence,"r");
-         char c;
-         int count = 0;
+         char * line = NULL;
+		 size_t linelength = 0;
+		 unsigned short count = 0;
          if (file) {
-            //  for (c = getc(file); c != EOF; c = getc(file)){
-            //     if (c == '\n'){ // Increment count if this character is newline
-            //         count += 1;
-            //         //cl = 0;
+           while (getline(&line, &linelength, file) > 0) {
+					printf("Reading in line:\n");
+					printf("%s", line);
+					unsigned short header[2] = {htons((count++)-1), htons((unsigned short) linelength)};
+					bytes_sent = send(sock_connection, header, sizeof(header), 0);
+					bytes_sent = send(sock_connection, line, linelength, 0);
+					printf("Sent line is:\n");
+					printf("%s", line);
+				}
+				//SEND FINAL MESSAGE
+				unsigned short header[2] = {htons((count++)-1), htons(0)};
+				bytes_sent = send(sock_connection, header, sizeof(header), 0);
+			}
+			printf("All lines sent\n");
+			if (ferror(file)) {
+				/* deal with error */
+			}
 
-            //     }
-                
-            //  }
-            //  printf("there are %d lines \n", count);
-            //  printf("here\n");
-             
-            
-        
-             char * line = (char*)malloc(80*sizeof(char));/* or other suitable maximum line size */
-             int j = 0;
-             printf("here2\n");
-             //printf("%s",fgets(line,sizeof(line),file));
-             while ( fgets ( line, sizeof(line), file ) != NULL ){
-                 //fputs ( line, stdout ); /* write the line */
+			fclose(file);
+		}
 
-                 Packet packet = new_packet((short) j+1,80,line);
-                 j++;
-                 int k;
-                 //printf("here\n");
-                 printf("%s\n",packet.data);
-                }
-                fclose ( file );
-            
-         }
-             
-
-
-        /* prepare the message to send */
-
-         msg_len = bytes_recd;
-
-         for (i=0; i<msg_len; i++)
-            modifiedSentence[i] = toupper (sentence[i]);
-
-         /* send message */
+          break;
+          }  
  
-        //  bytes_sent = send(sock_connection, modifiedSentence, msg_len, 0);
-      }
-
-      /* close the socket */
-
+ 		
       close(sock_connection);
    } 
-}
+
