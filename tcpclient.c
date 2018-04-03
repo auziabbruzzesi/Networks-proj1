@@ -135,7 +135,7 @@ int main(void) {
   		printf("size of message: %lu\n",strlen(message));
  	 	printf("%s \n",message);
         //if this was working just if(!h.count) would be sufficient... but something is wrong
-        if(!h.count||!(strlen(message))){break;}
+        if(!h.count){break;}
         }
 		// 
    		printf("\nThe response from server is:\n");
