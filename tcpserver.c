@@ -27,8 +27,8 @@ typedef struct{
 //header constructor method
 Header new_header(short seq, short count){
     Header h;
-    h.packet_sequence_num = seq;
-    h.count = count;
+    h.packet_sequence_num = htons(seq);
+    h.count = htons(count);
     return h;
     
 }
