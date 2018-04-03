@@ -145,7 +145,7 @@ int main(void) {
                     //printf("sending %d bytes for header \n", bytes_sent);
 					bytes_sent = send(sock_connection, line,80, 0);
                     size_t data_bytes_sent = bytes_sent;
-                    counter+= h.count;
+                    counter+= ntohs(h.count);
                     printf("temp: h.count = %d\n",h.count);
                     printf("counter now equals %d\n", counter);
                     //printf("sending %d bytes for body \n", bytes_sent);
