@@ -138,6 +138,7 @@ int main(void) {
          if (file) {
            while (getline(&line, &buffer, file) > 0) {
 					//printf("Reading in line: %s \n",line);
+                    printf("this is strlen(line): %d\n",strlen(line) );
 					Header h = new_header(seq,strlen(line));
 					bytes_sent = send(sock_connection, &h, sizeof(long), 0);
                     size_t header_bytes_sent = bytes_sent;
