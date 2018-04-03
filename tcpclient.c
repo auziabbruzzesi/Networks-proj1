@@ -116,7 +116,10 @@ while(1){
   bytes_recd = recv(sock_client,&h, STRING_SIZE, 0); 
   printf("header bytes received = %d \n", bytes_recd);
   char * message = (char*)malloc((h.count+1)*sizeof(char));
+  bytes_recd = 0;
+  while(!bytes_recd){
   bytes_recd = recv(sock_client,message,h.count+1,0);
+  }
   printf("data bytes received = %d \n", bytes_recd);
   printf("header stuff %d\n", h.count);
   printf("length of messaage: %d\n",strlen(message));
