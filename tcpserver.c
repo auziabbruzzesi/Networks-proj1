@@ -103,8 +103,11 @@ int main(void) {
    client_addr_len = sizeof (client_addr);
 
    /* wait for incoming connection requests in an indefinite loop */
+   int counter= 0;
+   short seq = 0;
 
    for (;;) {
+   
 
       sock_connection = accept(sock_server, (struct sockaddr *) &client_addr, 
                                          &client_addr_len);
@@ -131,8 +134,7 @@ int main(void) {
          char * line = (char*)malloc(80*sizeof(char));
 		 size_t buffer = 256;
 		 unsigned short count = 0;
-         int counter= 0;
-         short seq = 0;
+         
          if (file) {
            while (something=getline(&line, &buffer, file) > 0) {
 					//printf("Reading in line: %s \n",line);
