@@ -103,7 +103,7 @@ int main(void) {
    printf("Please input the file name:\n");
    scanf("%s", sentence);
    msg_len = strlen(sentence) + 1;
-
+while(1){
    /* send message */
    
    bytes_sent = send(sock_client, sentence, msg_len, 0);
@@ -124,8 +124,7 @@ int main(void) {
 
   printf("%s \n",message);
 
-   printf("\nThe response from server is:\n");
-   printf("%s\n\n", modifiedSentence);
+}
 
    /* close the socket */
 
