@@ -126,6 +126,7 @@ while(1){
   printf("size of message: %lu \n", sizeof(message));
 
   printf("%s \n",message);
+  if(bytes_recd<0){break;}
   if(!h.count){break;}
 
 }
