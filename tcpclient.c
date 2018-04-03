@@ -134,6 +134,7 @@ int main(void) {
   		printf("header stuff %d\n", h.count);
   		printf("size of message: %lu\n",strlen(message));
  	 	printf("%s \n",message);
+          if(!h.count){break;}
         }
 		fprintf(file, "%s", modifiedSentence);
    		printf("\nThe response from server is:\n");
