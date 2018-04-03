@@ -132,11 +132,13 @@ int main(void) {
 		 size_t buffer = 256;
 		 unsigned short count = 0;
          int something;
+         int counter;
          short seq = 0;
          if (file) {
            while (something=getline(&line, &buffer, file) > 0) {
 					//printf("Reading in line: %s \n",line);
 					Header h = new_header(seq,strlen(line));
+                    printf("temp: size of line is %xu\n", sizeof(line));
 					bytes_sent = send(sock_connection, &h, sizeof(long), 0);
                     size_t header_bytes_sent = bytes_sent;
                     //printf("sending %d bytes for header \n", bytes_sent);
