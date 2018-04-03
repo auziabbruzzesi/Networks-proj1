@@ -114,13 +114,15 @@ int main(void) {
   Header h;
   char * message = (char*)malloc((80)*sizeof(char));
   //char * message = (char*)malloc()
+  size_t message_bytes = 1;
   int package = 0;
-  while(package < 4){
+  while(message_bytes){
   bytes_recd = recv(sock_client,&h, sizeof(long), 0); 
   printf("header bytes received = %d \n", bytes_recd);
   
   bytes_recd= 0;
   bytes_recd = recv(sock_client,message,80,0);
+  message_bytes = bytes_recd;
   printf("data bytes received = %d \n", bytes_recd);
   printf("header stuff %d\n", h.count);
   printf("length of messaage: %d\n",strlen(message));
