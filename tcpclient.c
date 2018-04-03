@@ -112,10 +112,13 @@ int main(void) {
   //ssize_t recv(int socket, void *buffer, size_t length, int flags);
   // I need 2 recv's -- one for the header and one for the data
   Header h;
+  char * message = (char*)malloc((80)*sizeof(char));
   //char * message = (char*)malloc()
+  int package = 0;
+  while(package < 3){
   bytes_recd = recv(sock_client,&h, sizeof(long), 0); 
   printf("header bytes received = %d \n", bytes_recd);
-  char * message = (char*)malloc((80)*sizeof(char));
+  
   bytes_recd= 0;
   bytes_recd = recv(sock_client,message,h.count+1,0);
   printf("data bytes received = %d \n", bytes_recd);
@@ -124,7 +127,8 @@ int main(void) {
   printf("size of message: %lu \n", sizeof(message));
 
   printf("%s \n",message);
-
+  packet+=1;
+  }
    printf("\nThe response from server is:\n");
    printf("%s\n\n", modifiedSentence);
 
