@@ -117,7 +117,8 @@ int main(void) {
   char * message = (char*)malloc(h.count*sizeof(char));
   bytes_recd = recv(sock_client,message,h.count+1,0);
   printf("header stuff %d\n", h.count);
-  printf("actual content %s \n",message);
+  printf("size of messaage: %d\n",strlen(message));
+  printf("%s \n",message);
 
    printf("\nThe response from server is:\n");
    printf("%s\n\n", modifiedSentence);
