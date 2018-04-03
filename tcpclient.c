@@ -124,15 +124,15 @@ int main(void) {
     data_bytes = ntohs(h.count);
 
     printf("Packet %d received with %d data bytes",seq,data_bytes);
-    printf("sequence number is %d\n", seq);
-    printf("header bytes received = %d \n", bytes_recd);
+    //printf("sequence number is %d\n", seq);
+    //printf("header bytes received = %d \n", bytes_recd);
     bytes_recd= 0;
     bytes_recd = recv(sock_client,message,80,0);
     message_bytes = bytes_recd;
-    printf("data bytes received = %d \n", bytes_recd);
-    printf("header stuff %d\n", h.count);
-    printf("length of message: %lu\n",strlen(message));
-    printf("size of message: %lu \n", sizeof(message));
+    //printf("data bytes received = %d \n", bytes_recd);
+    //printf("header stuff %d\n", h.count);
+    //printf("length of message: %lu\n",strlen(message));
+    //printf("size of message: %lu \n", sizeof(message));
 
     printf("%s \n",message);
     fprintf(file, "%s",message);
