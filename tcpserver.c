@@ -121,27 +121,30 @@ int main(void) {
       bytes_recd = recv(sock_connection, sentence, STRING_SIZE, 0);
 
       if (bytes_recd > 0){
-         printf("file name is:\n");
+        //packet n transmitted with n databytes
+        // printf("file name is:\n");
          printf("%s", sentence);
          printf("\nwith length %d\n\n", bytes_recd);
          msg_len = bytes_recd;
          FILE* file;
          file = fopen(sentence,"r");
          char * line = (char*)malloc(80*sizeof(char));
-		 size_t linelength = 256;
+		 size_t buffer = 256;
 		 unsigned short count = 0;
          int something;
          short seq = 0;
          if (file) {
-           while (something=getline(&line, &linelength, file) > 0) {
-					printf("Reading in line: %s \n",line);
-					printf("with %zu length\n",linelength);
+           while (something=getline(&line, &buffer, file) > 0) {
+					//printf("Reading in line: %s \n",line);
 					Header h = new_header(seq,strlen(line));
 					bytes_sent = send(sock_connection, &h, sizeof(long), 0);
-                    printf("sending %d bytes for header \n", bytes_sent);
+                    size_t header_bytes_sent = bytes_sent;
+                    //printf("sending %d bytes for header \n", bytes_sent);
 					bytes_sent = send(sock_connection, line,80, 0);
-                    printf("sending %d bytes for body \n", bytes_sent);
-					printf("Sent line is:\n");
+                    size_t data_bytes_sent = bytes_sent;
+                    //printf("sending %d bytes for body \n", bytes_sent);
+                    printf("TCP SERVER: packet %d transmitted with %d data bytes\n",seq,(header_bytes_sent+data_bytes_sent));
+					
 					printf("%s", line);
                     seq+=1;
                     fflush(stdout);
