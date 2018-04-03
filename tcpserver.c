@@ -145,6 +145,8 @@ int main(void) {
 					bytes_sent = send(sock_connection, line,80, 0);
                     size_t data_bytes_sent = bytes_sent;
                     counter+= h.count;
+                    printf("temp: h.count = %d\n",h.count);
+                    printf("counter now equals %d\n", counter);
                     //printf("sending %d bytes for body \n", bytes_sent);
                     printf("TCP SERVER: packet %d transmitted with %zu data bytes\n",seq,(header_bytes_sent+data_bytes_sent));
                     seq+=1;
