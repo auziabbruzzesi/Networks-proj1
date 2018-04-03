@@ -88,8 +88,7 @@ int main(void) {
     /* Clear server address structure and initialize with server address */
     memset( & server_addr, 0, sizeof(server_addr));
     server_addr.sin_family = AF_INET;
-    memcpy((char * ) & server_addr.sin_addr, server_hp - > h_addr,
-        server_hp - > h_length);
+    memcpy((char * ) & server_addr.sin_addr, server_hp -> h_addr,server_hp -> h_length);
     server_addr.sin_port = htons(server_port);
 
     /* connect to the server */
