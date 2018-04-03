@@ -137,18 +137,17 @@ int main(void) {
          
          if (file) {
            while (getline(&line, &buffer, file) > 0) {
-					//printf("Reading in line: %s \n",line);
-                    printf("this is strlen(line): %zu\n",strlen(line) );
+					
+                    
 					Header h = new_header(seq,strlen(line));
 					bytes_sent = send(sock_connection, &h, sizeof(long), 0);
                     size_t header_bytes_sent = bytes_sent;
-                    //printf("sending %d bytes for header \n", bytes_sent);
+                    
 					bytes_sent = send(sock_connection, line,80, 0);
                     size_t data_bytes_sent = bytes_sent;
                     counter+= ntohs(h.count);
-                    printf("temp: h.count = %d\n",h.count);
-                    printf("counter now equals %d\n", counter);
-                    //printf("sending %d bytes for body \n", bytes_sent);
+                   
+                    
                     printf("TCP SERVER: packet %d transmitted with %zu data bytes\n",seq,(header_bytes_sent+data_bytes_sent));
                     seq+=1;
                     fflush(stdout);
@@ -160,7 +159,7 @@ int main(void) {
                 size_t final_header_bytes_sent = bytes_sent;
                 printf("TCP SERVER: End of Transmission Packet with sequence number %d transmitted with %zu data bytes\n", seq, final_header_bytes_sent);
 			}
-			printf("All lines sent\n");
+			
 			
 
 			fclose(file);
@@ -169,6 +168,7 @@ int main(void) {
           break;
         
         }
+     printf("STATS:\n");
      printf("SERVER: number of packets transmitted: %d\n",seq);
      printf("SERVER: total data bytes sent: %d \n", counter);
 
