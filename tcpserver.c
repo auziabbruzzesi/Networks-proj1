@@ -134,14 +134,12 @@ int main(void) {
          char * line = (char*)malloc(80*sizeof(char));
 		 size_t buffer = 256;
 		 unsigned short count = 0;
-         Header h = new_header(seq,strlen(line));
-         
+         Header h;
          if (file) {
-        
            while (getline(&line, &buffer, file) > 0) {
 					
                     
-					
+					h = new_header(seq,strlen(line));
 					bytes_sent = send(sock_connection, &h, sizeof(long), 0);
                     size_t header_bytes_sent = bytes_sent;
                     

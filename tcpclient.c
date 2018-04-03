@@ -122,7 +122,6 @@ int main(void) {
     bytes_recd = recv(sock_client,&h, sizeof(long), 0); 
     seq = ntohs(h.packet_sequence_num);
     data_bytes = ntohs(h.count);
-
     printf("TCP CLIENT:Packet %d received with %d data bytes\n",seq,data_bytes);
     fflush(stdout);
     //printf("sequence number is %d\n", seq);
@@ -138,6 +137,7 @@ int main(void) {
     // printf("%s \n",message);
     fprintf(file, "%s",message);
     package+=1;
+
     
   }
   //    printf("\nThe response from server is:\n");
