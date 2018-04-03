@@ -117,11 +117,13 @@ int main(void) {
   int package = 0;
   int seq = 0;
   int data_bytes = 0;
+  int counter;
   while(message_bytes){
    char * message = (char*)malloc((80)*sizeof(char));
     bytes_recd = recv(sock_client,&h, sizeof(long), 0); 
     seq = ntohs(h.packet_sequence_num);
     data_bytes = ntohs(h.count);
+    counter += data_bytes;
     if(!data_bytes){
         printf("TCP CLIENT: End of Transmission Packet with sequence number %d received with %d data bytes\n", seq, data_bytes);
     }else{
@@ -144,10 +146,16 @@ int main(void) {
 
     
   }
+
+
+  printf("STATS:\n");
+  printf("SERVER: number of packets transmitted: %d\n",seq);
+  printf("SERVER: total data bytes sent: %d \n", counter);
   //    printf("\nThe response from server is:\n");
   //    printf("%s\n\n", modifiedSentence);
 
    /* close the socket */
+
 
    close (sock_client);
 }
