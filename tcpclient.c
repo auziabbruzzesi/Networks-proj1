@@ -108,28 +108,26 @@ int main(void) {
    /* send message */
    bytes_sent = send(sock_client, sentence, msg_len, 0);
 
-   /* get response from server */
-  //ssize_t recv(int socket, void *buffer, size_t length, int flags);
-  // I need 2 recv's -- one for the header and one for the data
-  Header h;
-  size_t message_bytes = 1;
-  int num = 81;
-  int package = 0;
-  int seq = 0;
-  int data_bytes = 0;
-  int counter;
+
+  Header h;					//make a header to store data in
+  size_t message_bytes = 1;	// initialize to 1 so the while loop will start
+
+ 
+  int seq = 0;				//initialize the sequence number
+  int data_bytes = 0;		//initialize data_bytes
+  int counter;				//initialize total bytes received counter
   while(message_bytes){
-	char * message = (char*)malloc((80)*sizeof(char));
-	bytes_recd = recv(sock_client,&h, sizeof(long), 0); 
-	seq = ntohs(h.packet_sequence_num);
-	data_bytes = ntohs(h.count);
-	//counter += data_bytes;
-	if(!data_bytes){
+	char * message = (char*)malloc((80)*sizeof(char)); //initialize the message... we know this will be at most 80 chars
+	bytes_recd = recv(sock_client,&h, sizeof(long), 0); //receive the header
+	seq = ntohs(h.packet_sequence_num); // pull the sequence number out of the header
+	data_bytes = ntohs(h.count); //pull the number of bytes received out of the header
+	
+	if(!data_bytes){ // if no bytes specified by the header, this is the last packet... print the appropriate thing
 		printf("TCP CLIENT: End of Transmission Packet with sequence number %d received with %d data bytes\n", seq, data_bytes);
 	}else{
-	printf("TCP CLIENT:Packet %d received with %d data bytes\n",seq,data_bytes);
+	printf("TCP CLIENT:Packet %d received with %d data bytes\n",seq,data_bytes); // otherwise print this
 	}
-	counter += data_bytes;
+	counter += data_bytes; //sum the number of bytes received
 	fflush(stdout);
 	bytes_recd= 0;
 	bytes_recd = recv(sock_client,message,80,0);
