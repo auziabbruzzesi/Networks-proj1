@@ -122,7 +122,11 @@ int main(void) {
     bytes_recd = recv(sock_client,&h, sizeof(long), 0); 
     seq = ntohs(h.packet_sequence_num);
     data_bytes = ntohs(h.count);
+    if(!data_bytes){
+        printf("TCP CLIENT: End of Transmission Packet with sequence number %d received with %d data bytes\n", seq, data_bytes);
+    }else{
     printf("TCP CLIENT:Packet %d received with %d data bytes\n",seq,data_bytes);
+    }
     fflush(stdout);
     //printf("sequence number is %d\n", seq);
     //printf("header bytes received = %d \n", bytes_recd);
