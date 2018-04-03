@@ -146,8 +146,8 @@ int main(void) {
                     seq+=1;
 				}
 				//SEND FINAL MESSAGE
-				unsigned short header[2] = {htons((count++)-1), htons(0)};
-				bytes_sent = send(sock_connection, header, sizeof(header), 0);
+				Packet lastPack = new_packet(seq,0,NULL);
+				bytes_sent = send(sock_connection, &lastPack.header, sizeof(lastPack.header), 0);
 			}
 			printf("All lines sent\n");
 			if (ferror(file)) {
