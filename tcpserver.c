@@ -130,15 +130,16 @@ int main(void) {
          char * line = (char*)malloc(80*sizeof(char));
 		 size_t linelength = 256;
 		 unsigned short count = 0;
+         int something;
          short seq = 0;
          if (file) {
-           while (getline(&line, &linelength, file) > 0) {
+           while (something=getline(&line, &linelength, file) > 0) {
 					printf("Reading in line: %s \n",line);
 					printf("with %zu length\n",linelength);
 					Header h = new_header(seq,strlen(line));
 					bytes_sent = send(sock_connection, &h, sizeof(long), 0);
                     printf("sending %d bytes for header \n", bytes_sent);
-					bytes_sent = send(sock_connection, line, 80, 0);
+					bytes_sent = send(sock_connection, line, something, 0);
                     printf("sending %d bytes for body \n", bytes_sent);
 					printf("Sent line is:\n");
 					printf("%s", line);
