@@ -116,11 +116,15 @@ int main(void) {
   int num = 81;
   int package = 0;
   int seq = 0;
+  int data_bytes = 0;
   while(message_bytes){
    char * message = (char*)malloc((80)*sizeof(char));
     bytes_recd = recv(sock_client,&h, sizeof(long), 0); 
     seq = ntohs(h.packet_sequence_num);
-    printf("sequence number is %d", seq);
+    data_bytes = ntohs(h.count);
+
+    printf("Packet %d received with %d data bytes",seq,data_bytes);
+    printf("sequence number is %d\n", seq);
     printf("header bytes received = %d \n", bytes_recd);
     bytes_recd= 0;
     bytes_recd = recv(sock_client,message,80,0);
