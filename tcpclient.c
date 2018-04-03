@@ -124,6 +124,7 @@ int main(void) {
     data_bytes = ntohs(h.count);
 
     printf("TCP CLIENT:Packet %d received with %d data bytes\n",seq,data_bytes);
+    fflush(stdout);
     //printf("sequence number is %d\n", seq);
     //printf("header bytes received = %d \n", bytes_recd);
     bytes_recd= 0;
@@ -137,7 +138,7 @@ int main(void) {
     // printf("%s \n",message);
     fprintf(file, "%s",message);
     package+=1;
-    fflush(stdout);
+    
   }
   //    printf("\nThe response from server is:\n");
   //    printf("%s\n\n", modifiedSentence);
