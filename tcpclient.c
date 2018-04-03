@@ -103,7 +103,8 @@ int main(void) {
    printf("Please input the file name:\n");
    scanf("%s", sentence);
    msg_len = strlen(sentence) + 1;
-
+   FILE * file;
+   file = fopen("out.txt","wb");
    /* send message */
    
    bytes_sent = send(sock_client, sentence, msg_len, 0);
@@ -117,19 +118,20 @@ int main(void) {
   size_t message_bytes = 1;
   int package = 0;
   while(message_bytes){
-  bytes_recd = recv(sock_client,&h, sizeof(long), 0); 
-  printf("header bytes received = %d \n", bytes_recd);
-  
-  bytes_recd= 0;
-  bytes_recd = recv(sock_client,message,80,0);
-  message_bytes = bytes_recd;
-  printf("data bytes received = %d \n", bytes_recd);
-  printf("header stuff %d\n", h.count);
-  printf("length of messaage: %d\n",strlen(message));
-  printf("size of message: %lu \n", sizeof(message));
+    bytes_recd = recv(sock_client,&h, sizeof(long), 0); 
+    printf("header bytes received = %d \n", bytes_recd);
+    
+    bytes_recd= 0;
+    bytes_recd = recv(sock_client,message,80,0);
+    message_bytes = bytes_recd;
+    printf("data bytes received = %d \n", bytes_recd);
+    printf("header stuff %d\n", h.count);
+    printf("length of messaage: %d\n",strlen(message));
+    printf("size of message: %lu \n", sizeof(message));
 
-  printf("%s \n",message);
-  package+=1;
+    printf("%s \n",message);
+    fprintf(file,message);
+    package+=1;
   }
    printf("\nThe response from server is:\n");
    printf("%s\n\n", modifiedSentence);
