@@ -11,9 +11,6 @@
 #include <unistd.h>         /* for close */
 
 #define STRING_SIZE 1024
-#define HOST  "cisc450.cis.udel.edu"
-#define PORT 45678
-
 //this is a comment
 typedef struct{
     short packet_sequence_num,count;
@@ -107,48 +104,26 @@ int main(void) {
    scanf("%s", sentence);
    msg_len = strlen(sentence) + 1;
 
- 	bytes_sent = send(sock_client, sentence, msg_len, 0);
-
    /* send message */
-  	FILE *file;
-	file = fopen("output.txt", "w");
-	printf("response received \n");
-	int counter=0; 
-	if (file) { 
-//		do {
-		
-        
-        
-        while(1){
-        Header h;
-		/* get response from server */
-		//ssize_t recv(int socket, void *buffer, size_t length, int flags);
-  		// I need 2 recv's -- one for the header and one for the data
-  		//char * message = (char*)malloc()
-  		
-          
-        bytes_recd = recv(sock_client,&h, STRING_SIZE, 0); 
-  		char message[81];
-  		bytes_recd = recv(sock_client,&message,h.count+1,0);
-  		counter = h.count;
-  		printf("header stuff %d\n", h.count);
-  		printf("size of message: %lu\n",strlen(message));
- 	 	printf("%s \n",message);
-        
-        //fprintf(file, "%s", message);
-        if(h.count != strlen(message)){
-            printf("ERROR not receiving correctly ERROR\n");
-            break;
-        }
-        if(!h.count){break;}
-        //free(message);
-        
-        }
-		
-   		printf("\nThe response from server is:\n");
-   		printf("%s\n\n", modifiedSentence);
+   
+   bytes_sent = send(sock_client, sentence, msg_len, 0);
+
+   /* get response from server */
+  //ssize_t recv(int socket, void *buffer, size_t length, int flags);
+  // I need 2 recv's -- one for the header and one for the data
+  Header h;
+  //char * message = (char*)malloc()
+  bytes_recd = recv(sock_client,&h, STRING_SIZE, 0); 
+  char * message = (char*)malloc(h.count*sizeof(char));
+  bytes_recd = recv(sock_client,message,h.count+1,0);
+  printf("header stuff %d\n", h.count);
+  printf("size of messaage: %d\n",strlen(message));
+  printf("%s \n",message);
+
+   printf("\nThe response from server is:\n");
+   printf("%s\n\n", modifiedSentence);
+
    /* close the socket */
-//   	} while (counter>0);
-   } 
+
    close (sock_client);
 }
