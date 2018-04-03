@@ -27,8 +27,8 @@ typedef struct{
 //header constructor method
 Header new_header(short seq, short count){
     Header h;
-    h.packet_sequence_num = seq;
-    h.count = count;
+    h.packet_sequence_num = htons(seq);
+    h.count = htons(count);
     return h;
     
 }
@@ -127,7 +127,7 @@ int main(void) {
          msg_len = bytes_recd;
          FILE* file;
          file = fopen(sentence,"r");
-         char * line = NULL;
+         char * line = (char*)malloc(80*sizeof(char));
 		 size_t linelength = 256;
 		 unsigned short count = 0;
          short seq = 0;
@@ -135,9 +135,9 @@ int main(void) {
            while (getline(&line, &linelength, file) > 0) {
 					printf("Reading in line: %s \n",line);
 					printf("with %zu length\n",linelength);
-					Packet p = new_packet(seq,strlen(line),line);
-					bytes_sent = send(sock_connection, &p.header, sizeof(long), 0);
-					bytes_sent = send(sock_connection, p.data, 80, 0);
+					Header h = new_header(seq,strlen(line));
+					bytes_sent = send(sock_connection, &h, sizeof(long), 0);
+					bytes_sent = send(sock_connection, line, 80, 0);
 					printf("Sent line is:\n");
 					printf("%s", line);
                     seq+=1;
