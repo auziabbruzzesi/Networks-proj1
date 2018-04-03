@@ -113,7 +113,7 @@ int main(void) {
   // I need 2 recv's -- one for the header and one for the data
   Header h;
   //char * message = (char*)malloc()
-  bytes_recd = recv(sock_client,&h, STRING_SIZE, 0); 
+  bytes_recd = recv(sock_client,&h, sizeof(long), 0); 
   printf("header bytes received = %d \n", bytes_recd);
   char * message = (char*)malloc((80)*sizeof(char));
   bytes_recd = recv(sock_client,message,h.count+1,0);
