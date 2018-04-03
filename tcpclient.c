@@ -126,8 +126,9 @@ int main(void) {
     counter += data_bytes;
     if(!data_bytes){
           printf("TCP CLIENT: End of Transmission Packet with sequence number %d received with %d data bytes\n",seq,data_bytes);
-    }
+    }else{
     printf("TCP CLIENT:Packet %d received with %d data bytes\n",seq,data_bytes);
+    }
     fflush(stdout);
     
     bytes_recd= 0;
