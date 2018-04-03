@@ -143,7 +143,7 @@ int main(void) {
 					bytes_sent = send(sock_connection, line,80, 0);
                     size_t data_bytes_sent = bytes_sent;
                     //printf("sending %d bytes for body \n", bytes_sent);
-                    printf("TCP SERVER: packet %d transmitted with %xu data bytes\n",seq,(header_bytes_sent+data_bytes_sent));
+                    printf("TCP SERVER: packet %d transmitted with %zu data bytes\n",seq,(header_bytes_sent+data_bytes_sent));
 					
 					printf("%s", line);
                     seq+=1;
