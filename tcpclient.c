@@ -123,7 +123,7 @@ int main(void) {
   		//char * message = (char*)malloc()
   		bytes_recd = recv(sock_client,&h, STRING_SIZE, 0); 
   		char * message = (char*)malloc(h.count*sizeof(char));
-  		bytes_recd = recv(sock_client,modifiedSentence,h.count+1,0);
+  		bytes_recd = recv(sock_client,message,h.count+1,0);
   		counter = h.count;
   		printf("header stuff %d\n", h.count);
   		printf("size of message: %lu\n",strlen(message));
