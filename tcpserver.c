@@ -136,7 +136,7 @@ int main(void) {
 		 unsigned short count = 0;
          
          if (file) {
-           while (something=getline(&line, &buffer, file) > 0) {
+           while (getline(&line, &buffer, file) > 0) {
 					//printf("Reading in line: %s \n",line);
 					Header h = new_header(seq,strlen(line));
 					bytes_sent = send(sock_connection, &h, sizeof(long), 0);
