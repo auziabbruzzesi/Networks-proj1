@@ -113,8 +113,8 @@ int main(void) {
   // I need 2 recv's -- one for the header and one for the data
   Header h;
   size_t message_bytes = 1;
-  
-  
+  int num = 81;
+  int package = 0;
   int seq = 0;
   int data_bytes = 0;
   int counter;
