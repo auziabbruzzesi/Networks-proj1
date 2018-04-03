@@ -144,8 +144,6 @@ int main(void) {
                     size_t data_bytes_sent = bytes_sent;
                     //printf("sending %d bytes for body \n", bytes_sent);
                     printf("TCP SERVER: packet %d transmitted with %zu data bytes\n",seq,(header_bytes_sent+data_bytes_sent));
-					
-					printf("%s", line);
                     seq+=1;
                     fflush(stdout);
                     
@@ -153,6 +151,8 @@ int main(void) {
 				//SEND FINAL MESSAGE
 				Header final_header = new_header(seq,0);
 				bytes_sent = send(sock_connection, &final_header, sizeof(final_header), 0);
+                size_t final_header_bytes_sent = bytes_sent;
+                printf("TCP SERVER: End of Transmission Packet with sequence number %d transmitted with %zu data bytes\n", seq, final_header_bytes_sent);
 			}
 			printf("All lines sent\n");
 			if (ferror(file)) {
