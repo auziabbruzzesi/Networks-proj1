@@ -134,7 +134,7 @@ int main(void) {
 	message_bytes = bytes_recd;
 	
 	fprintf(file, "%s",message);
-	package+=1;
+
 
 	
   }
