@@ -127,7 +127,7 @@ int main(void) {
   printf("size of message: %lu \n", sizeof(message));
 
   printf("%s \n",message);
-  packet+=1;
+  package+=1;
   }
    printf("\nThe response from server is:\n");
    printf("%s\n\n", modifiedSentence);
