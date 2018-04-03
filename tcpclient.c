@@ -123,19 +123,20 @@ int main(void) {
 	bytes_recd = recv(sock_client,&h, sizeof(long), 0); 
 	seq = ntohs(h.packet_sequence_num);
 	data_bytes = ntohs(h.count);
-	counter += data_bytes;
+	//counter += data_bytes;
 	if(!data_bytes){
 		printf("TCP CLIENT: End of Transmission Packet with sequence number %d received with %d data bytes\n", seq, data_bytes);
 	}else{
-		printf("TCP CLIENT:Packet %d received with %d data bytes\n",seq,data_bytes);
+	printf("TCP CLIENT:Packet %d received with %d data bytes\n",seq,data_bytes);
 	}
+	counter += data_bytes;
 	fflush(stdout);
 	bytes_recd= 0;
 	bytes_recd = recv(sock_client,message,80,0);
 	message_bytes = bytes_recd;
 	
 	fprintf(file, "%s",message);
-	
+	package+=1;
 
 	
   }
