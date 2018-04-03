@@ -111,7 +111,7 @@ int main(void) {
    /* get response from server */
   //ssize_t recv(int socket, void *buffer, size_t length, int flags);
   // I need 2 recv's -- one for the header and one for the data
-  Header h = (Header)malloc(sizeof(long));
+  Header h;
   //char * message = (char*)malloc()
   bytes_recd = recv(sock_client,&h, STRING_SIZE, 0); 
   printf("header bytes received = %d \n", bytes_recd);
