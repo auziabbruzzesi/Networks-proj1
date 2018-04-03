@@ -137,6 +137,7 @@ int main(void) {
 					printf("with %zu length\n",linelength);
 					Header h = new_header(seq,strlen(line));
 					bytes_sent = send(sock_connection, &h, sizeof(long), 0);
+                    printf("sending %d bytes\n", bytes_sent);
 					bytes_sent = send(sock_connection, line, 80, 0);
 					printf("Sent line is:\n");
 					printf("%s", line);
