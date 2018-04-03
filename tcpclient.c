@@ -137,6 +137,7 @@ int main(void) {
     // printf("%s \n",message);
     fprintf(file, "%s",message);
     package+=1;
+    fflush(stdout);
   }
   //    printf("\nThe response from server is:\n");
   //    printf("%s\n\n", modifiedSentence);
