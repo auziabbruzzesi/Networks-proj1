@@ -120,7 +120,7 @@ int main(void) {
   printf("header bytes received = %d \n", bytes_recd);
   
   bytes_recd= 0;
-  bytes_recd = recv(sock_client,message,h.count+1,0);
+  bytes_recd = recv(sock_client,message,80,0);
   printf("data bytes received = %d \n", bytes_recd);
   printf("header stuff %d\n", h.count);
   printf("length of messaage: %d\n",strlen(message));
