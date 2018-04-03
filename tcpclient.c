@@ -136,7 +136,10 @@ int main(void) {
  	 	printf("%s \n",message);
         
         //fprintf(file, "%s", message);
-        if(h.count != strlen(message)){break;}
+        if(h.count != strlen(message)){
+            printf("ERROR not receiving correctly ERROR\n");
+            break;
+        }
         if(!h.count){break;}
         //free(message);
         
