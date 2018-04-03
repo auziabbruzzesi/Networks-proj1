@@ -137,7 +137,6 @@ int main(void) {
     
   }
   printf("STATS:\n");
-  printf
 
    /* close the socket */
 
