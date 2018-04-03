@@ -115,7 +115,7 @@ int main(void) {
   char * message = (char*)malloc((80)*sizeof(char));
   //char * message = (char*)malloc()
   int package = 0;
-  while(package < 8){
+  while(package < 5){
   bytes_recd = recv(sock_client,&h, sizeof(long), 0); 
   printf("header bytes received = %d \n", bytes_recd);
   
@@ -127,7 +127,6 @@ int main(void) {
   printf("size of message: %lu \n", sizeof(message));
 
   printf("%s \n",message);
-  printf("%dth package\n", package);
   package+=1;
   }
    printf("\nThe response from server is:\n");
