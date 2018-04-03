@@ -157,7 +157,7 @@ int main(void) {
 				Header final_header = new_header(seq,0);
 				bytes_sent = send(sock_connection, &final_header, sizeof(final_header), 0);
                 size_t final_header_bytes_sent = bytes_sent;
-                printf("TCP SERVER: End of Transmission Packet with sequence number %d transmitted with %d data bytes\n", seq, (ntohs(new_header.count)));
+                printf("TCP SERVER: End of Transmission Packet with sequence number %d transmitted with %d data bytes\n", seq, (ntohs(final_header.count)));
 			}
 			
 			
