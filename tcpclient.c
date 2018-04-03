@@ -135,7 +135,7 @@ int main(void) {
     //printf("size of message: %lu \n", sizeof(message));
 
     // printf("%s \n",message);
-    // fprintf(file, "%s",message);
+    fprintf(file, "%s",message);
     package+=1;
   }
   //    printf("\nThe response from server is:\n");
