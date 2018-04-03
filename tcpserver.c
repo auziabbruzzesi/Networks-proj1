@@ -131,19 +131,18 @@ int main(void) {
          char * line = (char*)malloc(80*sizeof(char));
 		 size_t buffer = 256;
 		 unsigned short count = 0;
-         int something;
-         int counter;
+         int counter= 0;
          short seq = 0;
          if (file) {
            while (something=getline(&line, &buffer, file) > 0) {
 					//printf("Reading in line: %s \n",line);
 					Header h = new_header(seq,strlen(line));
-                    printf("temp: size of line is %xu\n", sizeof(line));
 					bytes_sent = send(sock_connection, &h, sizeof(long), 0);
                     size_t header_bytes_sent = bytes_sent;
                     //printf("sending %d bytes for header \n", bytes_sent);
 					bytes_sent = send(sock_connection, line,80, 0);
                     size_t data_bytes_sent = bytes_sent;
+                    counter+= h.count;
                     //printf("sending %d bytes for body \n", bytes_sent);
                     printf("TCP SERVER: packet %d transmitted with %zu data bytes\n",seq,(header_bytes_sent+data_bytes_sent));
                     seq+=1;
@@ -157,16 +156,19 @@ int main(void) {
                 printf("TCP SERVER: End of Transmission Packet with sequence number %d transmitted with %zu data bytes\n", seq, final_header_bytes_sent);
 			}
 			printf("All lines sent\n");
-			if (ferror(file)) {
-				/* deal with error */
-			}
+			
 
 			fclose(file);
 		}
 
           break;
-          }  
+        
+        }
+     printf("SERVER: number of packets transmitted: %d\n",seq);
+     printf("SERVER: total data bytes sent: %d \n", counter);
+
+          
  
- 		
+
       close(sock_connection);
    } 
