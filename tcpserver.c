@@ -144,8 +144,8 @@ int main(void) {
                     fflush(stdout);
 				}
 				//SEND FINAL MESSAGE
-				unsigned short header[2] = {htons((count++)-1), htons(0)};
-				bytes_sent = send(sock_connection, header, sizeof(header), 0);
+				Header final_header = new_header(seq,0);
+				bytes_sent = send(sock_connection, &final_header, sizeof(final_header), 0);
 			}
 			printf("All lines sent\n");
 			if (ferror(file)) {
