@@ -128,6 +128,7 @@ int main(void) {
 	printf("TCP CLIENT:Packet %d received with %d data bytes\n",seq,data_bytes); // otherwise print this
 	}
 	counter += data_bytes; //sum the number of bytes received
+	printf("this is counter : %d \n", counter);
 	fflush(stdout);
 	bytes_recd= 0;
 	bytes_recd = recv(sock_client,message,80,0);
