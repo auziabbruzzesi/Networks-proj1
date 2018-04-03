@@ -140,7 +140,7 @@ int main(void) {
   }
   printf("STATS:\n");
 
-  printf
+  //printf
 
    /* close the socket */
 
