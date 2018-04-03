@@ -117,26 +117,31 @@ int main(void) {
   int package = 0;
   int seq = 0;
   int data_bytes = 0;
-  int counter = 0;
   while(message_bytes){
    char * message = (char*)malloc((80)*sizeof(char));
     bytes_recd = recv(sock_client,&h, sizeof(long), 0); 
     seq = ntohs(h.packet_sequence_num);
     data_bytes = ntohs(h.count);
-    counter += data_bytes;
 
     printf("TCP CLIENT:Packet %d received with %d data bytes\n",seq,data_bytes);
     fflush(stdout);
-    
+    //printf("sequence number is %d\n", seq);
+    //printf("header bytes received = %d \n", bytes_recd);
     bytes_recd= 0;
     bytes_recd = recv(sock_client,message,80,0);
     message_bytes = bytes_recd;
-    
+    //printf("data bytes received = %d \n", bytes_recd);
+    //printf("header stuff %d\n", h.count);
+    //printf("length of message: %lu\n",strlen(message));
+    //printf("size of message: %lu \n", sizeof(message));
+
+    // printf("%s \n",message);
     fprintf(file, "%s",message);
     package+=1;
     
   }
-  printf("STATS:\n");
+  //    printf("\nThe response from server is:\n");
+  //    printf("%s\n\n", modifiedSentence);
 
    /* close the socket */
 
