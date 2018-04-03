@@ -12,6 +12,31 @@
 
 #define STRING_SIZE 1024
 //this is a comment
+typedef struct{
+    short packet_sequence_num,count;
+}Header;
+
+//header constructor method
+Header new_header(short seq, short count){
+    Header h;
+    h.packet_sequence_num = seq;
+    h.count = count;
+    return h;
+    
+}
+
+typedef struct{
+    Header header;
+    char * data;
+
+}Packet;
+
+Packet new_packet(short seq,short count,char * data){
+    Packet p;
+    p.header = new_header(seq,count);
+    p.data = data;
+    return p;
+}
 int main(void) {
 
    int sock_client;  /* Socket used by client */
