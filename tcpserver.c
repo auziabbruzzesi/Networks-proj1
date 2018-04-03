@@ -138,11 +138,9 @@ int main(void) {
 					Packet p = new_packet(seq,strlen(line),line);
 					bytes_sent = send(sock_connection, &p.header, sizeof(p.header), 0);
                     printf("sent header\n");
-                    
 					bytes_sent = send(sock_connection, p.data, strlen(p.data), 0);
-                    printf("this is what I just sent %s\n",p.data);
 					printf("Sent line is:\n");
-					printf("%s\n", line);
+					printf("%s", line);
                     seq+=1;
 				}
 				//SEND FINAL MESSAGE
