@@ -121,7 +121,8 @@ while(1){
   bytes_recd = recv(sock_client,message,h.count+1,0);
   }
   printf("data bytes received = %d \n", bytes_recd);
-  printf("header stuff %d\n", h.count);
+  printf("header byte count %d\n", h.count);
+  printf("header seq number %d \n",h.packet_sequence_num);
   printf("length of messaage: %d\n",strlen(message));
   printf("size of message: %lu \n", sizeof(message));
 
