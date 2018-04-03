@@ -135,8 +135,9 @@ int main(void) {
   		printf("size of message: %lu\n",strlen(message));
  	 	printf("%s \n",message);
           if(!h.count){break;}
+        fprintf(file, "%s", modifiedSentence);
         }
-		fprintf(file, "%s", modifiedSentence);
+		
    		printf("\nThe response from server is:\n");
    		printf("%s\n\n", modifiedSentence);
    /* close the socket */
