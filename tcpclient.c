@@ -115,7 +115,7 @@ int main(void) {
   //char * message = (char*)malloc()
   bytes_recd = recv(sock_client,&h, STRING_SIZE, 0); 
   char * message = (char*)malloc(h.count*sizeof(char));
-  bytes_recd = recv(sock_client,message,h.count+1);
+  bytes_recd = recv(sock_client,message,h.count+1,0);
   printf("header stuff %d\n", h.count);
   printf("actual content %s \n",message);
 
