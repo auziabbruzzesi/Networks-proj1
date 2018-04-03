@@ -135,8 +135,6 @@ int main(void) {
   		printf("size of message: %lu\n",strlen(message));
  	 	printf("%s \n",message);
           if(!h.count){break;}
-        fprintf(file, "%s", message);
-        free(message);
         }
 		
    		printf("\nThe response from server is:\n");
