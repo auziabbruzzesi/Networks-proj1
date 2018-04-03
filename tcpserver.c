@@ -145,7 +145,7 @@ int main(void) {
 					printf("%s", line);
                     seq+=1;
                     fflush(stdout);
-                    break;
+                    
 				}
 				//SEND FINAL MESSAGE
 				Header final_header = new_header(seq,0);
