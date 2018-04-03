@@ -141,6 +141,7 @@ int main(void) {
 					printf("Sent line is:\n");
 					printf("%s", line);
                     seq+=1;
+                    fflush(stdout);
 				}
 				//SEND FINAL MESSAGE
 				unsigned short header[2] = {htons((count++)-1), htons(0)};
