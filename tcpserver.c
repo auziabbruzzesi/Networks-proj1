@@ -148,7 +148,7 @@ int main(void) {
                     counter+= ntohs(h.count);
                    
                     
-                    printf("TCP SERVER: packet %d transmitted with %zu data bytes\n",seq,(header_bytes_sent+data_bytes_sent));
+                    printf("TCP SERVER: packet %d transmitted with %zu data bytes\n",seq,(ntohs(h.count)));
                     seq+=1;
                     fflush(stdout);
                     
