@@ -123,7 +123,7 @@ int main(void) {
     seq = ntohs(h.packet_sequence_num);
     data_bytes = ntohs(h.count);
 
-    printf("Packet %d received with %d data bytes",seq,data_bytes);
+    printf("TCP CLIENT:Packet %d received with %d data bytes\n",seq,data_bytes);
     //printf("sequence number is %d\n", seq);
     //printf("header bytes received = %d \n", bytes_recd);
     bytes_recd= 0;
@@ -134,12 +134,12 @@ int main(void) {
     //printf("length of message: %lu\n",strlen(message));
     //printf("size of message: %lu \n", sizeof(message));
 
-    printf("%s \n",message);
-    fprintf(file, "%s",message);
+    // printf("%s \n",message);
+    // fprintf(file, "%s",message);
     package+=1;
   }
-   printf("\nThe response from server is:\n");
-   printf("%s\n\n", modifiedSentence);
+  //    printf("\nThe response from server is:\n");
+  //    printf("%s\n\n", modifiedSentence);
 
    /* close the socket */
 
