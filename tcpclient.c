@@ -103,7 +103,7 @@ int main(void) {
    printf("Please input the file name:\n");
    scanf("%s", sentence);
    msg_len = strlen(sentence) + 1;
-while(1){
+
    /* send message */
    
    bytes_sent = send(sock_client, sentence, msg_len, 0);
@@ -116,20 +116,16 @@ while(1){
   bytes_recd = recv(sock_client,&h, STRING_SIZE, 0); 
   printf("header bytes received = %d \n", bytes_recd);
   char * message = (char*)malloc((h.count+1)*sizeof(char));
-  bytes_recd = 0;
-  bytes_recd = recv(sock_client,message,STRING_SIZE,0);
- 
+  bytes_recd = recv(sock_client,message,h.count+1,0);
   printf("data bytes received = %d \n", bytes_recd);
-  printf("header byte count %d\n", h.count);
-  printf("header seq number %d \n",h.packet_sequence_num);
+  printf("header stuff %d\n", h.count);
   printf("length of messaage: %d\n",strlen(message));
   printf("size of message: %lu \n", sizeof(message));
 
   printf("%s \n",message);
-  if(bytes_recd<0){break;}
-  if(!h.count){break;}
 
-}
+   printf("\nThe response from server is:\n");
+   printf("%s\n\n", modifiedSentence);
 
    /* close the socket */
 
