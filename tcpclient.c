@@ -120,7 +120,7 @@ int main(void) {
         
         
         while(1){
-        Header h;
+        Header h = NULL;
 		/* get response from server */
 		//ssize_t recv(int socket, void *buffer, size_t length, int flags);
   		// I need 2 recv's -- one for the header and one for the data
