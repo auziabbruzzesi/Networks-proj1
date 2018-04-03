@@ -133,7 +133,7 @@ int main(void) {
          int something;
          short seq = 0;
          if (file) {
-           while (something=getline(&line, 80, file) > 0) {
+           while (something=getline(&line, &linelength, file) > 0) {
 					printf("Reading in line: %s \n",line);
 					printf("with %zu length\n",linelength);
 					Header h = new_header(seq,strlen(line));
