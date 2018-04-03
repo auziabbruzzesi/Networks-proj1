@@ -134,9 +134,10 @@ int main(void) {
   		printf("header stuff %d\n", h.count);
   		printf("size of message: %lu\n",strlen(message));
  	 	printf("%s \n",message);
-          //fprintf(file, "%s", message);
-          if(!h.count){break;}
-        free(message);
+        
+        //fprintf(file, "%s", message);
+        if(!h.count){break;}
+        //free(message);
         
         }
 		
