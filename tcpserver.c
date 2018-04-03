@@ -127,7 +127,7 @@ int main(void) {
          msg_len = bytes_recd;
          FILE* file;
          file = fopen(sentence,"r");
-         char * line = (char*)malloc(81*sizeof(char));
+         char * line = (char*)malloc(80*sizeof(char));
 		 size_t linelength = 256;
 		 unsigned short count = 0;
          int something;
