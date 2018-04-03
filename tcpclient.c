@@ -116,18 +116,25 @@ int main(void) {
 	int counter=0; 
 	if (file) { 
 //		do {
-		Header h;
+		
+        
+        
+        while(1){
+        Header h;
 		/* get response from server */
 		//ssize_t recv(int socket, void *buffer, size_t length, int flags);
   		// I need 2 recv's -- one for the header and one for the data
   		//char * message = (char*)malloc()
-  		bytes_recd = recv(sock_client,&h, STRING_SIZE, 0); 
+  		
+          
+        bytes_recd = recv(sock_client,&h, STRING_SIZE, 0); 
   		char * message = (char*)malloc(h.count*sizeof(char));
   		bytes_recd = recv(sock_client,message,h.count+1,0);
   		counter = h.count;
   		printf("header stuff %d\n", h.count);
   		printf("size of message: %lu\n",strlen(message));
  	 	printf("%s \n",message);
+        }
 		fprintf(file, "%s", modifiedSentence);
    		printf("\nThe response from server is:\n");
    		printf("%s\n\n", modifiedSentence);
