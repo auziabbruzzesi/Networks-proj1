@@ -134,10 +134,9 @@ int main(void) {
   		printf("header stuff %d\n", h.count);
   		printf("size of message: %lu\n",strlen(message));
  	 	printf("%s \n",message);
-        //if this was working just if(!h.count) would be sufficient... but something is wrong
-        if(!h.count){break;}
+          if(!h.count){break;}
         }
-		// 
+		fprintf(file, "%s", modifiedSentence);
    		printf("\nThe response from server is:\n");
    		printf("%s\n\n", modifiedSentence);
    /* close the socket */
