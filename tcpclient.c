@@ -123,7 +123,7 @@ int main(void) {
     seq = ntohs(h.packet_sequence_num);
     data_bytes = ntohs(h.count);
     if(!data_bytes){
-        printf("TCP CLIENT: End of Transmission Packet with sequence number %d received with %d data bytes\n", seq, data_bytes);
+        printf("TCP CLIENT: End of Transmission Packet with sequence number %d received with %d data bytes\n", seq, data_bytes)\;
     }else{
     printf("TCP CLIENT:Packet %d received with %d data bytes\n",seq,data_bytes);
     }
