@@ -109,32 +109,31 @@ int main(void) {
    bytes_sent = send(sock_client, sentence, msg_len, 0);
 
 
-  Header h;					//make a header to store data in
-  size_t message_bytes = 1;	// initialize to 1 so the while loop will start
+  Header h;						//make a header to store data in
+  size_t message_bytes = 1;		// initialize to 1 so the while loop will start
 
  
-  int seq = 0;				//initialize the sequence number
-  int data_bytes = 0;		//initialize data_bytes
+  int seq = 0;					//initialize the sequence number
+  int data_bytes = 0;			//initialize data_bytes
   int counter = 0;				//initialize total bytes received counter
   while(message_bytes){
 	char * message = (char*)malloc((80)*sizeof(char)); //initialize the message... we know this will be at most 80 chars
 	bytes_recd = recv(sock_client,&h, sizeof(long), 0); //receive the header
 	seq = ntohs(h.packet_sequence_num); // pull the sequence number out of the header
-	data_bytes = ntohs(h.count); //pull the number of bytes received out of the header
+	data_bytes = ntohs(h.count); 	//pull the number of bytes received out of the header
 	
-	if(!data_bytes){ // if no bytes specified by the header, this is the last packet... print the appropriate thing
+	if(!data_bytes){ 				// if no bytes specified by the header, this is the last packet... print the appropriate thing
 		printf("TCP CLIENT: End of Transmission Packet with sequence number %d received with %d data bytes\n", seq, data_bytes);
 	}else{
 	printf("TCP CLIENT:Packet %d received with %d data bytes\n",seq,data_bytes); // otherwise print this
 	}
-	counter += data_bytes; //sum the number of bytes received
-	printf("this is counter : %d \n", counter);
-	fflush(stdout);
+	counter += data_bytes; 			//sum the number of bytes received
+	fflush(stdout); 				// we were having some issues with printing... I think this helps
 	bytes_recd= 0;
-	bytes_recd = recv(sock_client,message,80,0);
-	message_bytes = bytes_recd;
+	bytes_recd = recv(sock_client,message,80,0); //receive the line, once again, we know this will be at most 80 bytes
+	message_bytes = bytes_recd; 	//will pop out of the loop if this is 0
 	
-	fprintf(file, "%s",message);
+	fprintf(file, "%s",message); 	//put the line in the out.txt file
 
 
 	
@@ -144,10 +143,6 @@ int main(void) {
   printf("STATS:\n");
   printf("SERVER: number of packets transmitted: %d\n",seq);
   printf("SERVER: total data bytes sent: %d \n", counter);
-  //    printf("\nThe response from server is:\n");
-  //    printf("%s\n\n", modifiedSentence);
-
-   /* close the socket */
 
 
    close (sock_client);
