@@ -126,37 +126,33 @@ int main(void) {
       if (bytes_recd > 0){
         //packet n transmitted with n databytes
         // printf("file name is:\n");
-         printf("%s", sentence);
-         printf("\nwith length %d\n\n", bytes_recd);
+        
+        
          msg_len = bytes_recd;
-         FILE* file;
-         file = fopen(sentence,"r");
-         char * line = (char*)malloc(80*sizeof(char));
-		 size_t buffer = 256;
-		 unsigned short count = 0;
-         Header h;
+         FILE* file;                //initialize the file
+         file = fopen(sentence,"r");//open it and get ready to read
+         char * line = (char*)malloc(80*sizeof(char)); //allocate space for the line
+		 size_t buffer = 256; //this should be big enough
+         Header h;                  //initialize the header
          if (file) {
-           while (getline(&line, &buffer, file) > 0) {
+           while (getline(&line, &buffer, file) > 0) { //get the lines
 					
                     
-					h = new_header(seq,strlen(line));
-					bytes_sent = send(sock_connection, &h, sizeof(long), 0);
-                    size_t header_bytes_sent = bytes_sent;
+					h = new_header(seq,strlen(line)); //create a header
+					bytes_sent = send(sock_connection, &h, sizeof(long), 0); //send the header
+					bytes_sent = send(sock_connection, line,80, 0); //send the line
                     
-					bytes_sent = send(sock_connection, line,80, 0);
-                    size_t data_bytes_sent = bytes_sent;
-                    counter+= ntohs(h.count);
+                    counter+= ntohs(h.count); //count the number of bytes sent, pull it from the header
                    
                     
-                    printf("TCP SERVER: packet %d transmitted with %d data bytes\n",seq,(ntohs(h.count)));
-                    seq+=1;
+                    printf("TCP SERVER: packet %d transmitted with %d data bytes\n",seq,(ntohs(h.count))); //required print statement
+                    seq+=1; //increment the seq to count how many packets have sent
                     fflush(stdout);
                     
 				}
 				//SEND FINAL MESSAGE
-				Header final_header = new_header(seq,0);
-				bytes_sent = send(sock_connection, &final_header, sizeof(final_header), 0);
-                size_t final_header_bytes_sent = bytes_sent;
+				Header final_header = new_header(seq,0); //create the final header
+				bytes_sent = send(sock_connection, &final_header, sizeof(final_header), 0); //send it!
                 printf("TCP SERVER: End of Transmission Packet with sequence number %d transmitted with %d data bytes\n", seq, (ntohs(final_header.count)));
 			}
 			
