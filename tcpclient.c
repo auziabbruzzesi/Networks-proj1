@@ -101,7 +101,8 @@ int main(void) {
    /* user interface */
 
    printf("Please input the file name:\n");
-   scanf("%s", sentence);
+   //scanf("%s", sentence);
+   sentence = "test2.txt";
    msg_len = strlen(sentence) + 1;
    FILE * file;
    file = fopen("out.txt","wb");
