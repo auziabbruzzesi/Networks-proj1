@@ -104,7 +104,7 @@ int main(void) {
 
    /* wait for incoming connection requests in an indefinite loop */
    int counter= 0;
-   short seq = 0;
+   short seq = 1;
 
    for (;;) {
    
@@ -164,6 +164,7 @@ int main(void) {
           break;
         
         }
+    //print stats
      printf("STATS:\n");
      printf("SERVER: number of packets transmitted: %d\n",seq);
      printf("SERVER: total data bytes sent: %d \n", counter);

@@ -113,7 +113,7 @@ int main(void) {
   size_t message_bytes = 1;		// initialize to 1 so the while loop will start
 
  
-  int seq = 0;					//initialize the sequence number
+  int seq = 1;					//initialize the sequence number
   int data_bytes = 0;			//initialize data_bytes
   int counter = 0;				//initialize total bytes received counter
   while(message_bytes){
