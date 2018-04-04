@@ -115,7 +115,7 @@ int main(void) {
  
   int seq = 0;				//initialize the sequence number
   int data_bytes = 0;		//initialize data_bytes
-  int counter;				//initialize total bytes received counter
+  int counter = 0;				//initialize total bytes received counter
   while(message_bytes){
 	char * message = (char*)malloc((80)*sizeof(char)); //initialize the message... we know this will be at most 80 chars
 	bytes_recd = recv(sock_client,&h, sizeof(long), 0); //receive the header
